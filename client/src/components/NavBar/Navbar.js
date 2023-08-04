@@ -1,23 +1,29 @@
 import React from "react";
 import logo from "../../assets/logo.svg";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const { pathname } = useLocation();
   return (
     <nav class="py-4 2xl:px-6">
       <div class="container flex items-center justify-between">
         <img src={logo} alt="logo" class="object-contain" width="150px" />
 
         <ul class="hidden md:flex items-center space-x-6">
-          <a
-            class="font-semibold cursor-pointer"
-            href="index.html"
+          <Link
+            to={"/"}
+            class={`${pathname === "/" && "font-semibold"} cursor-pointer`}
             id="lws-bookStore"
           >
             <li>Book Store</li>
-          </a>
-          <a class="cursor-pointer" href="AddBook.html" id="lws-addBook">
+          </Link>
+          <Link
+            to={"/form"}
+            class={`${pathname === "/form" && "font-semibold"} cursor-pointer`}
+            id="lws-addBook"
+          >
             <li>Add Book</li>
-          </a>
+          </Link>
         </ul>
 
         <form class="flex items-center">
