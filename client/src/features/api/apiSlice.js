@@ -34,6 +34,13 @@ export const apiSlice = createApi({
         { type: "book", id: arg.bookId },
       ],
     }),
+    deleteBook: builder.mutation({
+      query: (bookId) => ({
+        url: `/books/${bookId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (result, error, arg) => ["books"],
+    }),
   }),
 });
 
@@ -42,4 +49,5 @@ export const {
   useAddBookMutation,
   useGetBookQuery,
   useEditBookMutation,
+  useDeleteBookMutation,
 } = apiSlice;

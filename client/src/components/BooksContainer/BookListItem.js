@@ -1,12 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useDeleteBookMutation } from "../../features/api/apiSlice";
 
 const BookListItem = ({ book }) => {
   const { name, author, thumbnail, price, rating, featured, id } = book || {};
   const navigate = useNavigate();
+  const [deleteBook, { isLoading }] = useDeleteBookMutation();
 
   const handleEdit = () => {
     navigate(`/books/edit-book/${id}`);
+  };
+
+  const handleDelete = () => {
+    if (id) {
+      deleteBook(id);
+    }
   };
 
   let stars = [];
@@ -51,7 +59,11 @@ const BookListItem = ({ book }) => {
                 />
               </svg>
             </button>
-            <button className="lws-deleteBook">
+            <button
+              className="lws-deleteBook"
+              disabled={isLoading}
+              onClick={handleDelete}
+            >
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
