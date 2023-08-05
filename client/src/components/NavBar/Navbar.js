@@ -7,7 +7,9 @@ const Navbar = () => {
   return (
     <nav class="py-4 2xl:px-6">
       <div class="container flex items-center justify-between">
-        <img src={logo} alt="logo" class="object-contain" width="150px" />
+        <Link to={"/"}>
+          <img src={logo} alt="logo" class="object-contain" width="150px" />
+        </Link>
 
         <ul class="hidden md:flex items-center space-x-6">
           <Link

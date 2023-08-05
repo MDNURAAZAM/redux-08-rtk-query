@@ -1,13 +1,22 @@
 import React from "react";
 import BookListItem from "./BookListItem";
+import { useGetBooksQuery } from "../../features/api/apiSlice";
 
 const BookList = () => {
+  const { data: books, isLoading, isError } = useGetBooksQuery();
+  if (isLoading) {
+    return <div>Loading ....</div>;
+  }
+  if (isError) {
+    return <div>Error occurred</div>;
+  }
   return (
     <div class="space-y-6 md:space-y-0 md:grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* <!-- Card 1 --> */}
-      <BookListItem />
-      <BookListItem />
-      <BookListItem />
+      {books?.length > 0 &&
+        books.map((book) => (
+          <BookListItem id={book.id} book={book}></BookListItem>
+        ))}
     </div>
   );
 };
