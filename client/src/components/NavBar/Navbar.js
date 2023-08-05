@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/logo.svg";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addSearch } from "../../features/filter/filterSlice";
 
 const Navbar = () => {
   const { pathname } = useLocation();
+  const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(addSearch(search));
+  };
   return (
     <nav className="py-4 2xl:px-6">
       <div className="container flex items-center justify-between">
@@ -30,7 +39,7 @@ const Navbar = () => {
           </Link>
         </ul>
 
-        <form className="flex items-center">
+        <form className="flex items-center" onSubmit={handleSubmit}>
           <div className="group relative rounded-md bg-white">
             <svg
               width="20"
@@ -49,6 +58,8 @@ const Navbar = () => {
               placeholder="Filter books..."
               className="search"
               id="lws-search"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
             />
           </div>
         </form>
