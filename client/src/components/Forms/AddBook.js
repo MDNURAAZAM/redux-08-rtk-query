@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useAddBookMutation } from "../../features/api/apiSlice";
 import { useNavigate } from "react-router-dom";
 
 const AddBook = () => {
-  const [addBook, { isLoading, isSuccess, isError }] = useAddBookMutation();
+  const [addBook, { isLoading }] = useAddBookMutation();
 
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
@@ -130,7 +130,12 @@ const AddBook = () => {
               </label>
             </div>
 
-            <button type="submit" className="submit" id="lws-submit">
+            <button
+              type="submit"
+              className="submit"
+              id="lws-submit"
+              disabled={isLoading}
+            >
               Add Book
             </button>
           </form>
