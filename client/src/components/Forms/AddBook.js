@@ -1,11 +1,11 @@
 import React from "react";
 
-const BookForm = () => {
+const AddBook = () => {
   return (
     <main class="py-6 2xl:px-6">
       <div class="container">
         <div class="p-8 overflow-hidden bg-white shadow-cardShadow rounded-md max-w-xl mx-auto">
-          <h4 class="mb-8 text-xl font-bold text-center">Add Book</h4>
+          <h4 class="mb-8 text-xl font-bold text-center">Add New Book</h4>
           <form class="book-form">
             <div class="space-y-2">
               <label for="lws-bookName">Book Name</label>
@@ -89,4 +89,4 @@ const BookForm = () => {
   );
 };
 
-export default BookForm;
+export default AddBook;

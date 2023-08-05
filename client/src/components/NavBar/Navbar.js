@@ -20,8 +20,10 @@ const Navbar = () => {
             <li>Book Store</li>
           </Link>
           <Link
-            to={"/form"}
-            class={`${pathname === "/form" && "font-semibold"} cursor-pointer`}
+            to={"/books/add-book"}
+            class={`${
+              pathname === "/books/add-book" && "font-semibold"
+            } cursor-pointer`}
             id="lws-addBook"
           >
             <li>Add Book</li>

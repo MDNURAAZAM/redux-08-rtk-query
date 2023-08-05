@@ -1,7 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BookListItem = ({ book }) => {
-  const { name, author, thumbnail, price, rating, featured } = book || {};
+  const { name, author, thumbnail, price, rating, featured, id } = book || {};
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    navigate(`/books/edit-book/${id}`);
+  };
 
   let stars = [];
   for (let index = 0; index < rating; index++) {
@@ -26,7 +32,7 @@ const BookListItem = ({ book }) => {
         <div class="flex items-center justify-between">
           {featured ? <span class="lws-badge">featured</span> : <span></span>}
           <div class="text-gray-500 space-x-2">
-            <button class="lws-edit ">
+            <button class="lws-edit " onClick={() => handleEdit()}>
               <svg
                 fill="none"
                 viewBox="0 0 24 24"
